@@ -26,7 +26,8 @@ logging = get_logger()
 class OpenAIChat:
     def __init__(self):
         self.setup_openai_api()
-        self.setup_pinecone()
+        #self.setup_pinecone()
+        self.initialize_pinecone()
         self.setup_llama_index_settings()
         self.setup_chat_engine()
 
@@ -38,6 +39,14 @@ class OpenAIChat:
         openai.api_key = self.openai_api_key
         logging.info("OpenAI API has been set up.")
 
+    def initialize_pinecone():
+        api_key = st.secrets["PINECONE_API_KEY"]
+        pc = Pinecone(api_key=api_key)
+        assistant = pc.assistant.Assistant(
+            assistant_name="pineapple-employee-assistant-bot", 
+        )
+        return assistant
+        
     def setup_pinecone(self):
         """
         Sets up the pinecone by retrieving the API key from the environment variables and creating a pinecone index.
@@ -178,7 +187,11 @@ class OpenAIChat:
         :return: the response stream from the chat engine
         """
         start_time = time.time()
-        response_stream = self.chat_engine_base.stream_chat(user_query)
+        #response_stream = self.chat_engine_base.stream_chat(user_query)
+        
+        msg = Message(role="user", content=user_query)
+        response_stream = assistant.chat(messages=[msg])
+        
         end_time = time.time()
         logging.info(f"Time taken for this response: {end_time - start_time}")
         return response_stream
