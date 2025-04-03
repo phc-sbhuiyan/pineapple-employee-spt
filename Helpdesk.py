@@ -215,7 +215,7 @@ def chatbox_func():
     client = initialize_openai()
     #Add Voice instead of typing using Microphone
     audio_bytes = audio_recorder(pause_threshold=2.0, sample_rate=41_000)
-    transcript_text = '';
+    transcript_text = ''
     if audio_bytes:
          audio_location = "audio_file.wav"
          with open(audio_location, "wb") as f:
@@ -224,9 +224,9 @@ def chatbox_func():
          with open(audio_location, "rb") as fa:
                 transcript = client.audio.transcriptions.create(model="whisper-1", file = fa)
                 transcript_text = transcript.text
-         st.write(transcript_text)
          st.session_state.messages.append({"role": "user", "content": transcript_text})
          handle_on_submit(chat_container, transcript_text)
+         audio_bytes = ''
         
 def button_click_callback():
     if "submit_button" in st.session_state and st.session_state["submit_button"] is not None:
