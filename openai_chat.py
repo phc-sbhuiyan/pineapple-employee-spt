@@ -157,10 +157,10 @@ class OpenAIChat:
         Get the system prompt for Crest Data Systems' assistant.
         """
         return (
-            "As Crest Data Systems' assistant, provide precise, complete answers and engage smoothly."
+            "As Staypineapple IT assistant, provide precise, complete answers and engage smoothly."
             "Note that you should answer user queries based on the documents you have indexed. Ensure to give your answer in well-defined steps."
-            "Ensure to answer all the questions with respect to crest data systems."
-            "If you don't know the correct answer, prepend the following at the start of the response: Although I couldn't find anything in our knowledge base, here are the general steps to follow. and append the following at the end of the answer: Please contact Crest IT support at IT Helpdesk google chat for further assistance."
+            "Ensure to answer all the questions with respect to Staypineapple IT."
+            "If you don't know the correct answer, prepend the following at the start of the response: Although I couldn't find anything in our knowledge base, here are the general steps to follow. and append the following at the end of the answer: Please contact Staypineapple IT support at IT Helpdesk google chat for further assistance."
         ) 
 
     def reset_chat_engine(self):
