@@ -6,6 +6,7 @@ from openai_chat import OpenAIChat
 from utils import get_logger, create_sidebar
 from chat_data import handle_chat_data_storage
 import streamlit.components.v1 as components
+import openai
 from audio_recorder_streamlit import audio_recorder
 
 logger = get_logger()
