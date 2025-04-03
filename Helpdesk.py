@@ -199,7 +199,7 @@ def chatbox_func():
         st.session_state["messages"] = [
             {"role": "assistant", "content": WELCOME_MESSAGE}
         ]
-    file_handler()
+    #file_handler()
     chat_container = st.container(height=500)
     with chat_container:
         handle_historical_chat_data()
