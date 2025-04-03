@@ -130,7 +130,7 @@ def chat_feedback_section():
     chat_col, feedback_col = st.columns([8, 3])
     with chat_col:
         st.title("💬 IT SmartSupport Agent - StaypineappleIT")
-        st.caption("🚀 Chatbot Powered by OpenAI")
+        st.caption("🚀 Chatbot Powered by Pineapple Hospitality, 2025")
     with feedback_col:
         feedback_ui_thumbs()
 
