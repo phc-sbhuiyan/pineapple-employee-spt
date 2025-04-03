@@ -184,7 +184,8 @@ def handle_on_submit(chat_container, prompt=DEFAULT_USER_QUERY):
             del st.session_state.image_uploaded
         else:
             response = openAIChatInst.ask_and_respond(prompt)
-        msg = "".join(list(response.response_gen))
+        #msg = "".join(list(response.response_gen))
+        msg = "".join(list(response.message["content"]))
         st.session_state.messages.append({"role": "assistant", "content": msg})
         st.chat_message("assistant").write(msg)
 
