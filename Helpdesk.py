@@ -243,7 +243,7 @@ def file_handler():
 
 def page_setup():
     # Custom header
-    st.set_page_config(layout="wide")
+    st.set_page_config(page_title='Staypineapple Employee Assistant', page_icon = 'https://www.staypineapple.com/skins/skin-pineapple-hospitality/favicon.ico', layout="wide")
     create_sidebar()
 
 
