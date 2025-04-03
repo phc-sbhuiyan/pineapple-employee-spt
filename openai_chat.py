@@ -16,6 +16,7 @@ from llama_index.llms.openai import OpenAI
 from llama_index.vector_stores.pinecone import PineconeVectorStore
 from logger import AppLogger
 from pinecone import Pinecone
+from pinecone_plugins.assistant.models.chat import Message
 from utils import get_logger
 from constant import *
 
