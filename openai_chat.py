@@ -46,7 +46,7 @@ class OpenAIChat:
         self.assistant = pc.assistant.Assistant(
             assistant_name="pineapple-employee-assistant-bot", 
         )
-        return assistant
+        #return assistant
         
     def setup_pinecone(self):
         """
