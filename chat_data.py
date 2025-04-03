@@ -9,7 +9,7 @@ import os
 logger = get_logger()
 
 load_dotenv()
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]    #os.getenv('OPENAI_API_KEY')
 
 def handle_chat_data_storage():
     """
@@ -64,7 +64,7 @@ def get_chat_response_openai(message):
     Retrieves a chat response using the OpenAI chat API.
     """
     try:
-        model = "gpt-3.5-turbo"
+        model = "gpt-4o-mini"
         client = get_openai_chat_instance()
         response = client.chat.completions.create(
             model=model,
