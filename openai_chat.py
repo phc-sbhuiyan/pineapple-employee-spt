@@ -39,7 +39,7 @@ class OpenAIChat:
         openai.api_key = self.openai_api_key
         logging.info("OpenAI API has been set up.")
 
-    def initialize_pinecone():
+    def initialize_pinecone(self):
         api_key = st.secrets["PINECONE_API_KEY"]
         pc = Pinecone(api_key=api_key)
         assistant = pc.assistant.Assistant(
