@@ -129,7 +129,7 @@ def chat_feedback_section():
     """
     chat_col, feedback_col = st.columns([8, 3])
     with chat_col:
-        st.title("💬 IT SmartSupport Agent - SolvIT")
+        st.title("💬 IT SmartSupport Agent - StaypineappleIT")
         st.caption("🚀 Chatbot Powered by OpenAI")
     with feedback_col:
         feedback_ui_thumbs()
@@ -203,7 +203,7 @@ def chatbox_func():
     with chat_container:
         handle_historical_chat_data()
 
-    if prompt := st.chat_input(placeholder="Message SolvIT...", key="input_text"):
+    if prompt := st.chat_input(placeholder="Message StaypineappleIT...", key="input_text"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         handle_on_submit(chat_container, prompt)
         
