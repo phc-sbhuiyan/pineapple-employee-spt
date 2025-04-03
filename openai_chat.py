@@ -33,7 +33,7 @@ class OpenAIChat:
         """
         Set up the OpenAI API by setting the API key from the environment variable and configuring the OpenAI API with the key.
         """
-        self.openai_api_key = os.getenv("OPENAI_API_KEY")
+        self.openai_api_key = st.secrets["OPENAI_API_KEY"]    #os.getenv("OPENAI_API_KEY")
         openai.api_key = self.openai_api_key
         logging.info("OpenAI API has been set up.")
 
@@ -41,7 +41,7 @@ class OpenAIChat:
         """
         Sets up the pinecone by retrieving the API key from the environment variables and creating a pinecone index.
         """
-        pinecone_api_key = os.getenv("PINECONE_API_KEY")
+        pinecone_api_key = st.secrets["PINECONE_API_KEY"]    #os.getenv("PINECONE_API_KEY")
         self.pinecone_index = self.create_pinecone_index(pinecone_api_key)
         logging.info("Pinecone has been set up.")
 
@@ -64,7 +64,7 @@ class OpenAIChat:
         """
         Set up the llama index settings including creating an OpenAI model, setting various settings, and logging the result.
         """
-        llm = OpenAI(model="gpt-3.5-turbo-0125", temperature=0)
+        llm = OpenAI(model="gpt-4o-mini", temperature=0)
         Settings.llm = llm
         Settings.embed_model = OpenAIEmbedding(embed_batch_size=50)
         Settings.text_splitter = SentenceSplitter()
