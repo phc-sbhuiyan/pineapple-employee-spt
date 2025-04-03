@@ -30,7 +30,7 @@ class OpenAIChat:
         #self.setup_pinecone()
         self.initialize_pinecone()
         self.setup_llama_index_settings()
-        self.setup_chat_engine()
+        #self.setup_chat_engine()
 
     def setup_openai_api(self):
         """
