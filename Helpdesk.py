@@ -200,7 +200,7 @@ def chatbox_func():
             {"role": "assistant", "content": WELCOME_MESSAGE}
         ]
     #file_handler()
-    chat_container = st.container(height=400)
+    chat_container = st.container(height=500)
     with chat_container:
         handle_historical_chat_data()
 
