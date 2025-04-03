@@ -188,6 +188,10 @@ def handle_on_submit(chat_container, prompt=DEFAULT_USER_QUERY):
         st.session_state.messages.append({"role": "assistant", "content": msg})
         st.chat_message("assistant").write(msg)
 
+def initialize_openai():
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    return client
+
 def chatbox_func():
     """
     Function to handle the chatbox functionality,
@@ -207,6 +211,7 @@ def chatbox_func():
         st.session_state.messages.append({"role": "user", "content": prompt})
         handle_on_submit(chat_container, prompt)
 
+    client = initialize_openai()
     #Add Voice instead of typing using Microphone
     audio_bytes = audio_recorder(pause_threshold=2.0, sample_rate=41_000)
     transcript_text = '';
