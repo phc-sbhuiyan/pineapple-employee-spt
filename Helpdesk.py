@@ -6,10 +6,9 @@ from openai_chat import OpenAIChat
 from utils import get_logger, create_sidebar
 from chat_data import handle_chat_data_storage
 import streamlit.components.v1 as components
-
+from audio_recorder_streamlit import audio_recorder
 
 logger = get_logger()
-
 
 def get_image_file_path(image_file):
     """
@@ -207,6 +206,20 @@ def chatbox_func():
     if prompt := st.chat_input(placeholder="Message StaypineappleIT...", key="input_text"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         handle_on_submit(chat_container, prompt)
+
+    #Add Voice instead of typing using Microphone
+    audio_bytes = audio_recorder(pause_threshold=2.0, sample_rate=41_000)
+    transcript_text = '';
+    if audio_bytes:
+         audio_location = "audio_file.wav"
+         with open(audio_location, "wb") as f:
+                f.write(audio_bytes)
+
+         with open(audio_location, "rb") as fa:
+                transcript = client.audio.transcriptions.create(model="whisper-1", file = fa)
+                transcript_text = transcript.text
+         st.write(transcript_text)
+         user_query = transcript_text
         
 def button_click_callback():
     if "submit_button" in st.session_state and st.session_state["submit_button"] is not None:
