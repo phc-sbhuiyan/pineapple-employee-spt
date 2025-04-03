@@ -225,7 +225,8 @@ def chatbox_func():
                 transcript = client.audio.transcriptions.create(model="whisper-1", file = fa)
                 transcript_text = transcript.text
          st.write(transcript_text)
-         user_query = transcript_text
+         st.session_state.messages.append({"role": "user", "content": transcript_text})
+         handle_on_submit(chat_container, transcript_text)
         
 def button_click_callback():
     if "submit_button" in st.session_state and st.session_state["submit_button"] is not None:
