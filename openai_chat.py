@@ -56,7 +56,7 @@ class OpenAIChat:
             Pinecone Index: The created Pinecone index for the specified collection.
         """
         pc = Pinecone(api_key=pinecone_api_key)
-        index = pc.Index("chatbot1")
+        index = pc.Index("chatbot-helpdesk-it")
         logging.info("Pinecone index has been created.")
         return index
     
