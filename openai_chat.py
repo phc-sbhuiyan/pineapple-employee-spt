@@ -43,7 +43,7 @@ class OpenAIChat:
     def initialize_pinecone(self):
         api_key = st.secrets["PINECONE_API_KEY"]
         pc = Pinecone(api_key=api_key)
-        assistant = pc.assistant.Assistant(
+        self.assistant = pc.assistant.Assistant(
             assistant_name="pineapple-employee-assistant-bot", 
         )
         return assistant
@@ -191,7 +191,7 @@ class OpenAIChat:
         #response_stream = self.chat_engine_base.stream_chat(user_query)
         
         msg = Message(role="user", content=user_query)
-        response_stream = assistant.chat(messages=[msg])
+        response_stream = self.assistant.chat(messages=[msg])
         
         end_time = time.time()
         logging.info(f"Time taken for this response: {end_time - start_time}")
