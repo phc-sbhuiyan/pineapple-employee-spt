@@ -94,8 +94,8 @@ def handle_rating_value():
     with thumbs_down_col:
         thumbs_down = st.button("👎", key="thumbs_down")
     with save_chat_col:
-        save_chat = st.button("Save & Reset Session", key="end_session")
-        change_button_colour("Save & Reset Session", "white", "green")
+        save_chat = st.button("End Session", key="end_session")
+        change_button_colour("End Session", "white", "green")
         if save_chat:
             handle_chat_data_storage()
             reset_session_state()
