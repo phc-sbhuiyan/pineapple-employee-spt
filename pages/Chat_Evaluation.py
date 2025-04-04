@@ -31,7 +31,7 @@ assistant = pc.assistant.Assistant(
 truchain = TruApp(
     assistant,
     app_id='Chat_QA101_PHQ',
-    feedbacks=[f_lang_match, qa_relevance])
+    feedbacks=[qa_relevance])
 
 user_query = "Do you have any information about walk-in guests?"
 msg = Message(role="user", content=user_query)
