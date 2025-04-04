@@ -152,4 +152,4 @@ zipp==3.21.0
 trulens-eval
 trulens-providers-openai
 trulens-apps-langchain
-langchain.chains
+langchain
