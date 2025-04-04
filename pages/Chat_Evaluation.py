@@ -21,7 +21,7 @@ f_lang_match = Feedback(hugs.language_match).on_input_output()
 llm = feedback.OpenAI()
 
 # Question/answer relevance between overall question and answer.
-qa_relevance = Feedback(openai.relevance).on_input_output()
+qa_relevance = Feedback(llm.relevance).on_input_output()
 
 api_key = st.secrets["PINECONE_API_KEY"]
 pc = Pinecone(api_key=api_key)
