@@ -4,7 +4,7 @@ from trulens_eval import TruChain, Feedback, Huggingface, Tru, feedback
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
 from langchain.chains import RetrievalQA
-from trulens.apps.custom import TruCustomApp
+from trulens.apps.custom import TruApp
 from trulens.core import TruSession
 from trulens.apps.custom import instrument
 from trulens.dashboard import run_dashboard
@@ -36,7 +36,7 @@ assistant = pc.assistant.Assistant(
 )
 
 # wrap with TruLens
-truchain = TruCustomApp(
+truchain = TruApp(
     assistant,
     app_id='Chat_QA101_PHQ',
     feedbacks=[f_lang_match, qa_relevance])
