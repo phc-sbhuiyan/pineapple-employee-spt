@@ -43,7 +43,9 @@ truchain = TruCustomApp(assistant,
 
 user_query = "Do you have any information about walk-in guests?"
 msg = Message(role="user", content=user_query)
-assistant.chat(messages=[msg])
+rag_assistant = assistant.chat(messages=[msg])
+
+print(rag_assistant)
 
 session.get_leaderboard()
 
