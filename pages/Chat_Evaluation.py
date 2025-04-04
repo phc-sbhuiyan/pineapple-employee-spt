@@ -5,10 +5,15 @@ from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
 from langchain.chains import RetrievalQA
 from trulens.apps.custom import TruCustomApp
+from trulens.core import TruSession
+from trulens.apps.custom import instrument
+from trulens.dashboard import run_dashboard
 
 create_sidebar()
 
 tru = Tru()
+session = TruSession()
+session.reset_database()
 
 # Initialize Huggingface-based feedback function collection class:
 hugs = Huggingface()
@@ -40,4 +45,6 @@ user_query = "Do you have any information about walk-in guests?"
 msg = Message(role="user", content=user_query)
 assistant.chat(messages=[msg])
 
-tru.run_dashboard()
+session.get_leaderboard()
+
+run_dashboard()
