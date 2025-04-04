@@ -3,7 +3,7 @@ from utils import create_sidebar
 from trulens_eval import TruChain, Feedback, Huggingface, Tru, feedback
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
-from langchain.chains import ChainQA
+from langchain.chains import RetrievalQA
 
 create_sidebar()
 
@@ -29,7 +29,7 @@ assistant = pc.assistant.Assistant(
     assistant_name="pineapple-employee-assistant-bot", 
 )
 
-chain = ChainQA.from_chain_type(
+chain = RetrievalQA.from_chain_type(
     llm=llm,
     chain_type="stuff",
     retriever=assistant
