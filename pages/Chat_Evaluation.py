@@ -1,3 +1,13 @@
+import streamlit as st
+from utils import create_sidebar
+from trulens_eval import Tru
+
+create_sidebar()
+
+tru = Tru()
+
+tru.run_dashboard()
+
 # import streamlit as st
 # from utils import create_sidebar
 # from trulens_eval import TruChain, Feedback, Huggingface, Tru, feedback
