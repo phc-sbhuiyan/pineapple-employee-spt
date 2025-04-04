@@ -3,6 +3,7 @@ from utils import create_sidebar
 from trulens_eval import TruChain, Feedback, Huggingface, Tru, feedback
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
+from langchain.chains import ChainQA
 
 create_sidebar()
 
@@ -16,17 +17,22 @@ f_lang_match = Feedback(hugs.language_match).on_input_output()
 # By default this will check language match on the main app input and main app
 # output.
 
-
 # OpenAI as feedback provider
-openai = feedback.OpenAI()
+llm = feedback.OpenAI()
 
 # Question/answer relevance between overall question and answer.
 qa_relevance = Feedback(openai.relevance).on_input_output()
 
 api_key = st.secrets["PINECONE_API_KEY"]
 pc = Pinecone(api_key=api_key)
-chain = pc.assistant.Assistant(
+assistant = pc.assistant.Assistant(
     assistant_name="pineapple-employee-assistant-bot", 
+)
+
+chain = ChainQA.from_chain_type(
+    llm=llm,
+    chain_type="stuff",
+    retriever=assistant
 )
 
 # wrap with TruLens
