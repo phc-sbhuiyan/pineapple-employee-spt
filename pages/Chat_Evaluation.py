@@ -4,6 +4,7 @@ from trulens_eval import TruChain, Feedback, Huggingface, Tru, feedback
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
 from langchain.chains import RetrievalQA
+from trulens.apps.custom import TruCustomApp
 
 create_sidebar()
 
@@ -29,17 +30,20 @@ assistant = pc.assistant.Assistant(
     assistant_name="pineapple-employee-assistant-bot", 
 )
 
-chain = RetrievalQA.from_chain_type(
+'''chain = RetrievalQA.from_chain_type(
     llm=llm,
     chain_type="stuff",
     retriever=assistant
 )
+'''
 
 # wrap with TruLens
-truchain = TruChain(chain,
+truchain = TruCustomApp(assistant,
     app_id='Chat_QA101',
+    app_name="Chat_QA101 Assistant RAG",
     feedbacks=[f_lang_match, qa_relevance])
 
-truchain("What should be done for walk-in guest?")
+with truchain:
+    assistant.chat("What should be done for walk-in guest?")
 
 tru.run_dashboard()
