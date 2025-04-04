@@ -1,6 +1,6 @@
 import streamlit as st
 from utils import create_sidebar
-from trulens_eval import TruChain, Feedback, Huggingface, Tru, feedback
+from trulens_eval import TruChain, Feedback, Tru, feedback
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
 from langchain.chains import RetrievalQA
@@ -14,14 +14,6 @@ create_sidebar()
 tru = Tru()
 # session = TruSession()
 # session.reset_database()
-
-# Initialize Huggingface-based feedback function collection class:
-hugs = Huggingface()
-
-# Define a language match feedback function using HuggingFace.
-f_lang_match = Feedback(hugs.language_match).on_input_output()
-# By default this will check language match on the main app input and main app
-# output.
 
 # OpenAI as feedback provider
 llm = feedback.OpenAI()
