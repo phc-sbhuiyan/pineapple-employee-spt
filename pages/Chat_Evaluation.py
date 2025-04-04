@@ -30,13 +30,6 @@ assistant = pc.assistant.Assistant(
     assistant_name="pineapple-employee-assistant-bot", 
 )
 
-'''chain = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff",
-    retriever=assistant
-)
-'''
-
 # wrap with TruLens
 truchain = TruCustomApp(assistant,
     app_id='Chat_QA101',
