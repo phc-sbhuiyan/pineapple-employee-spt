@@ -36,6 +36,7 @@ truchain = TruCustomApp(assistant,
     app_name="Chat_QA101 Assistant RAG",
     feedbacks=[f_lang_match, qa_relevance])
 
-assistant.chat("What should be done for walk-in guest?")
+msg = Message(role="user", content=user_query)
+assistant.chat(messages=[msg])
 
 tru.run_dashboard()
