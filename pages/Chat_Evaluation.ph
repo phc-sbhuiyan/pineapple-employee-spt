@@ -1,6 +1,9 @@
+from utils import create_sidebar
 from trulens_eval import TruChain, Feedback, Huggingface, Tru
 from pinecone import Pinecone
 from pinecone_plugins.assistant.models.chat import Message
+
+create_sidebar()
 
 tru = Tru()
 
